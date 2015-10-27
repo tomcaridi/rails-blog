@@ -1,0 +1,28 @@
+<% @posts.each do |post| %>
+
+<p>
+  <%= post.body %>
+</p>
+
+<% if post.user %>
+  Written by:
+    <%= post.user.username %>
+
+<% end %>
+
+<br><br>
+
+<% @post.comment.each do |comment| %>
+  <%= comment.body %>
+  Comment by:
+  <%= comment.user.username %>
+<% end %>
+
+<br><br>
+
+<%= form_for Post.new do |t| %>
+  <%= t.label :body %>
+  <%= t.text_area :body %>
+  <%= t.hidden_field :post_id, value: @post.id %>
+  <%= t.submit %>
+<% end %>

@@ -1,0 +1,5 @@
+<%= form_for @post, url: user_posts_path(@user_id) do |f| %>
+  <%= f.label :body %>
+  <%= f.text_area :body %>
+  <% f.submit %>
+<% end %>

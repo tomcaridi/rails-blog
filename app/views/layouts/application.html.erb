@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TcBlog</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<% if flash[:notice] %>
+  <%=flash[:notice] %>
+<% end %>
+
+<% if flash[:alert] %>
+  <%=flash[:alert] %>
+<% end %>
+
+<%= link_to "Login", users_sign_in_path %>
+<%= link_to "Sign Up", users_sign_up_path %>
+<% if session[:user_id] %>
+  <%= link_to "Sign Out", users_sign_out_path %>
+<% end %>
+
+<% if session[:user_id] %>
+  <%= link_to "My Posts", user_posts_path(session[:user_id]) %>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>

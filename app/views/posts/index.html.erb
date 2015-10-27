@@ -1,0 +1,18 @@
+<% @posts.each do |post| %>
+
+<p>
+  <%= post.body %>
+</p>
+
+<% if post.user %>
+  Written by:
+  <%= post.user.username %>
+  <% end %>
+<% end %>
+
+<br><br>
+<p>New Post:</p>
+<%= form_for @post do |t| %>
+  <%= t.label :body %>
+  <%= t.text_area :body %>
+<% end %>
