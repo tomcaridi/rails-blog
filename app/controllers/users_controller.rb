@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -11,20 +12,22 @@ class UsersController < ApplicationController
   def create
   	@user = User.new(user_params)
   	if @user.save
-  		flash[:notice] = "Welcome young grasshopper! Now you can sign in."
+  		flash[:notice] = "Welcome grasshopper! Now you can sign in."
   	else 
   		flash[:alert] ="There was a problem creating your account. Try again!"
   	end
-  	redirect_to root_path
+  	redirect_to sign_in_path
   end
   
   def show
-    @user = User.find(params[:id])
     @posts = @user.posts
+  end
+  
+  def edit
   end
 
   def update
-    @user = @user.update(user_params)
+    @user.update(user_params)
     redirect_to user_path(@user), notice: "Sucessfully updated profile."
   end
 

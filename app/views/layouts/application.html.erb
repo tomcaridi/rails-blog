@@ -24,6 +24,10 @@
   </ul>
 </nav>
 
+<% if session[:id] %>
+  <p>Hey there <%= @user.username %>!</p>
+<% end %>
+
 <% if flash[:notice] %>
   <%=flash[:notice] %>
 <% end %>
