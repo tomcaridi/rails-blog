@@ -4,24 +4,20 @@ class SessionsController < ApplicationController
   end
 
   def create
-    puts params
   	@user = User.where(username: params[:username]).first
-  	if @user
-  	  if @user.password == params[:password]
+  	if @user && @user.password == params[:password]
   	    session[:user_id] = @user.id
   	    flash[:notice] = "You have logged in successfully"
-  	  else
-  	  	flash[:alert] = "Your login information was inccorect."
-  	  end
+        redirect_to user_path(@user)
   	else
-  	  flash[:alert] = "Your login information was inccorect."
+  	  flash[:alert] = "Your information was incorrect."
+      redirect_to sign_in_path
   	end
-  	redirect_to root_path
   end
 
   def destroy
     session[:user_id] = nil
-    flash[:notice] = "You are signed out"
+    flash[:notice] = "You have signed out"
     redirect_to root_path
   end
 

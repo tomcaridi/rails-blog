@@ -1,0 +1,9 @@
+<%= form_tag("/search", method: "get") do %>
+  <%= label_tag(:query, "Search:") %>
+  <%= text_field_tag(:query) %>
+  <%= submit_tag("Submit") %>
+<% end %>
+
+<% @users.each do |user| %>
+  <p><%=link_to user.username, user_path(user.id)%></p><br>
+<% end %>

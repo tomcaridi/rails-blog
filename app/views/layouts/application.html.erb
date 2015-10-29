@@ -1,12 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TcBlog</title>
+  <title>blog</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<nav id="nav">
+  <div class="logo">blog</div>
+  <ul>
+    <li><%= link_to "Community", users_path %></li>
+    <% unless session[:user_id] %>
+	  <li><%= link_to "Sign In", sign_in_path %></li>
+	  <li><%= link_to "Sign Up", sign_up_path %></li>
+    <% end %>
+    <% if session[:user_id] %>
+	  <li><%= link_to "Sign Out", users_sign_out_path %></li>
+	  <li><%= link_to "New Post", new_post_path %></li>
+    <% end %> 
+  </ul>
+</nav>
 
 <% if flash[:notice] %>
   <%=flash[:notice] %>
@@ -14,16 +30,6 @@
 
 <% if flash[:alert] %>
   <%=flash[:alert] %>
-<% end %>
-
-<%= link_to "Login", users_sign_in_path %>
-<%= link_to "Sign Up", users_sign_up_path %>
-<% if session[:user_id] %>
-  <%= link_to "Sign Out", users_sign_out_path %>
-<% end %>
-
-<% if session[:user_id] %>
-  <%= link_to "My Posts", user_posts_path(session[:user_id]) %>
 <% end %>
 
 <%= yield %>

@@ -1,0 +1,42 @@
+/** { background: rgba(1, 1, 1, 0.1);}*/
+
+body {
+	font-family: "Quicksand"
+}
+
+.logo {
+	float: left;
+	color: white;
+	font-size: 1.5em;
+	margin-left: 10px;
+	margin-top: 3px;
+}
+
+#nav {
+	width: 102%;
+	height: 40px;
+	background-color: #cfd6d4;
+	margin-top: -8px;
+	margin-left: -9px;
+	color: white;
+}
+
+#nav ul {
+	float: right;
+	list-style: none;
+}
+
+#nav ul li {
+	color: white;
+	text-decoration: none;
+	font-size: 1em;
+	float: left;
+	vertical-align: middle;
+	margin-right: 20px;
+	margin-top: -6px;
+}
+
+a:link a:visited {
+	text-decoration: none;
+	color: white;
+}

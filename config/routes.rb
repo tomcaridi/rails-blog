@@ -3,17 +3,17 @@ Rails.application.routes.draw do
 
   root 'home#homepage'
 
-  get "/users/sign_in" => "sessions#new"
-  post "/users/sign_in" => "sessions#create"
-  get "/users/sign_up" => "users#new"
-  post "/users/sign_up" => "users#create"
+  get "/search" => "users#search"
+
+  get "/sign_in" => "sessions#new"
+  post "/sign_in" => "sessions#create"
+  get "/sign_up" => "users#new"
+  post "/sign_up" => "users#create"
   get "/users/sign_out" => "sessions#destroy"
-  get "/users/posts" => "posts#show"
 
-  resources :users do
-    resources :posts 
-  end
 
+  resources :users
+  resources :posts 
   resources :comments
 
 
