@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>blog</title>
+  <title>blabber</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -10,11 +10,11 @@
 <body>
 
 <nav id="nav">
-  <div class="logo">blog</div>
+  <div class="logo"><a href="/">blabber</a></div>
   <ul>
     <li><%= link_to "Community", users_path %></li>
     <% unless session[:user_id] %>
-	  <li><%= link_to "Sign In", sign_in_path %></li>
+	  <li><%= link_to "Log In", sign_in_path %></li>
 	  <li><%= link_to "Sign Up", sign_up_path %></li>
     <% end %>
     <% if session[:user_id] %>
@@ -23,20 +23,18 @@
     <% end %> 
   </ul>
 </nav>
+  <% if session[:id] %>
+    <p>Hey there <%= @user.username %>!</p>
+  <% end %>
 
-<% if session[:id] %>
-  <p>Hey there <%= @user.username %>!</p>
-<% end %>
+  <% if flash[:notice] %>
+    <%=flash[:notice] %>
+  <% end %>
 
-<% if flash[:notice] %>
-  <%=flash[:notice] %>
-<% end %>
-
-<% if flash[:alert] %>
-  <%=flash[:alert] %>
-<% end %>
+  <% if flash[:alert] %>
+    <%=flash[:alert] %>
+  <% end %>
 
 <%= yield %>
-
 </body>
 </html>

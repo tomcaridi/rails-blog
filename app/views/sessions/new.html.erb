@@ -1,8 +1,16 @@
-<h1>Sign in</h1>
-<%= form_tag "sign_in" do %>
-  <%= label_tag :username %>
-  <%= text_field_tag :username %>
-  <%= label_tag :password%>
-  <%= password_field_tag :password %>
-  <%= submit_tag "Login" %>
-<% end %>
+<body class="bg-home">
+<div class="container">
+	<div class="welcome-wrapper">
+		<div class="title"><em>blabber.</em></div>
+		<div class="enter-bx">
+		<h1>Log In</h1>
+		<%= form_tag "sign_in" do %>
+		  <%= label_tag :username %>
+		  <%= text_field_tag :username %><br>
+		  <%= label_tag :password%>
+		  <%= password_field_tag :password %><br>
+		  <%= submit_tag "Log In" %>
+		<% end %>
+		</div>
+	</div>
+</body>
