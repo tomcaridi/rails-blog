@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   	else 
   		flash[:alert] ="There was a problem creating your account. Try again!"
   	end
-  	redirect_to sign_in_path
+  	redirect_to sign_up_path
   end
   
   def show
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
 
   private
   def set_user
-      @user = User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def user_params

@@ -4,14 +4,21 @@
 </p>
 
 <p>
-  <strong>My Posts:</strong>
+  <strong>Latest blabs:</strong>
   <% @posts.each do |post| %>
+</p>
     <p><%= post.body %></p>
-      <% if session[:user_id] == post.user_id %>
+      <%= form_for [post, Comment.new] do |f| %>
+        <%= f.text_area :body %>
+        <%= f.submit %>
+      <% end %>
+
+    <% if session[:user_id] == post.user_id %>
         <p><%= link_to 'Edit Post', edit_post_path(post.id) %></p>
         <p><%= link_to 'Delete Post', post_path(post.id), method: :delete, data: {confirm: 'Are you sure?'} %></p><br>
       <% end %>
     <% end %>
+    
 <% if session[:user_id] == @user %>
   <%= link_to 'Edit Profile', edit_user_path(@user) %>
 <% end %> 

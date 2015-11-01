@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   def create
     body = params[:post][:body]
     id = session[:user_id]
-    @Post = Post.create(body: body, user_id: id)
+    @post = Post.create(body: body, user_id: id)
     redirect_to user_path(id)
   	# if @post.save
   	#   flash[:notice] = "Post was published"
@@ -25,36 +25,31 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
 
   def update
-    puts "*" *25
-    puts params
-    @post = Post.find(params[:id])
     @user = @post.user
     @post.update(body: params[:post][:body])
     redirect_to user_path(@user), notice: "Sucessfully updated post."
   end
 
   def show
-  	@post = Post.find(params[:id])
+    @comment = Comment.new
     redirect_to user_path
   end
 
   def destroy
     @post.destroy
-    puts "HI !!! "
     id = session[:user_id]
     redirect_to user_path(id), notice: "Post successfully deleted."
   end
 
   private
   def set_post
-      @post = Post.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
-  def user_params
+  def post_params
     params.require(:post).permit(:body)
   end
 end
