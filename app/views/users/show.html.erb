@@ -12,13 +12,19 @@
         <%= f.text_area :body %>
         <%= f.submit %>
       <% end %>
+      
+      <h4>Comments:</h4>
+      <% post.comments.each do |comment| %>
+        <h5><%= comment.user.username %>:</h5><p><%= comment.body %></p>
+      <% end %>
+
 
     <% if session[:user_id] == post.user_id %>
         <p><%= link_to 'Edit Post', edit_post_path(post.id) %></p>
         <p><%= link_to 'Delete Post', post_path(post.id), method: :delete, data: {confirm: 'Are you sure?'} %></p><br>
       <% end %>
     <% end %>
-    
+
 <% if session[:user_id] == @user %>
   <%= link_to 'Edit Profile', edit_user_path(@user) %>
 <% end %> 

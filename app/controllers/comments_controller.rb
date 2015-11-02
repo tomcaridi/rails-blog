@@ -10,9 +10,12 @@ class CommentsController < ApplicationController
   	# else
   	# 	flash[:alert] = "Comment not saved"
   	# end
-    redirect_to :back, notice: "Comment created"
+    redirect_to :back, notice: "Comment posted."
   end
 
   def destroy
+    @comment.destroy
+    id = session[:user_id]
+    render :new, notice: "Comment deleted."
   end
 end

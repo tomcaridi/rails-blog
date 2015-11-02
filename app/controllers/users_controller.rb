@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   
   def show
     @posts = @user.posts
+    @comments = @user.comments
   end
   
   def edit

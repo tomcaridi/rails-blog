@@ -35,7 +35,8 @@ class PostsController < ApplicationController
 
   def show
     @comment = Comment.new
-    redirect_to user_path
+    # @comments = @posts.comments
+    redirect_to user_path(@user)
   end
 
   def destroy
