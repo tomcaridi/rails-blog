@@ -74,13 +74,17 @@ img {
 	margin-top: 6px;
 }
 
+.logo a:link, a:visited {
+	text-decoration: none;
+	color: white;
+}
+
 #nav {
 	width: 102%;
 	height: 40px;
 	background-color: #57867E;
 	margin-top: -8px;
 	margin-left: -9px;
-	color: white;
 }
 
 #nav ul {
@@ -89,7 +93,6 @@ img {
 }
 
 #nav ul li {
-	color: white;
 	text-decoration: none;
 	font-size: 1em;
 	float: left;
@@ -98,7 +101,7 @@ img {
 	margin-top: -6px;
 }
 
-a:link, a:visited {
+#nav ul li a:link, a:visited {
 	text-decoration: none;
 	color: white;
 }
@@ -134,4 +137,50 @@ h1 {
 
 h3 {
 	text-align: center;
+}
+
+.feed-wrapper {
+	width: 45%;
+	margin: 0 auto;
+}
+
+.post-wrapper {
+	width: 95%;
+	margin: 0 auto;
+	border: 1px solid black;
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+
+.comments-form {
+	width: 95%;
+	margin: 0 auto;
+}
+
+.comments-list {
+	width: 95%;
+	margin: 0 auto;
+}
+
+textarea#comment_bx {
+	width: 98.5%;
+	margin: 0 auto;
+	border-radius: 5px;
+}
+
+.comment-btn {
+	width: 50px;
+	border-radius: 5px;
+}
+
+.post {
+	width: 95%;
+	height: auto;
+	margin: 0 auto;
+	padding-top: 10px;
+}
+
+.edit_delete {
+	width: 95%;
+	margin: 0 auto;
 }

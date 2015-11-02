@@ -1,32 +1,39 @@
-<p>
-  <strong>Username:</strong> 
-    <%= @user.username %>
-</p>
+<body class="bg-other">
+<div class="feed-wrapper">
+  <h3>
+    <strong><%= @user.username %>'s</strong> latest blabs:
+  </h3>
 
-<p>
-  <strong>Latest blabs:</strong>
-  <% @posts.each do |post| %>
-</p>
-    <p><%= post.body %></p>
-      <%= form_for [post, Comment.new] do |f| %>
-        <%= f.text_area :body %>
-        <%= f.submit %>
-      <% end %>
-      
-      <h4>Comments:</h4>
-      <% post.comments.each do |comment| %>
-        <h5><%= comment.user.username %>:</h5><p><%= comment.body %></p>
+    <% @posts.reverse_each do |post| %>
+    <div class="post-wrapper">
+      <div class="post"><%= post.body %></div>
+      <% if session[:user_id] == post.user_id %>
+        <div class="edit_delete">
+          <%= link_to 'Edit Post', edit_post_path(post.id) %><br>
+          <%= link_to 'Delete Post', post_path(post.id), method: :delete, data: {confirm: 'Are you sure?'} %>
+        </div>
       <% end %>
 
+        <div class="comments-form">
+          <h5>Leave a comment:</h5>
+          <%= form_for [post, Comment.new] do |f| %>
+            <%= f.text_area :body, :id => "comment_bx" %>
+            <%= f.submit :class => "comment_btn"%>
+          <% end %>
+        </div>
 
-    <% if session[:user_id] == post.user_id %>
-        <p><%= link_to 'Edit Post', edit_post_path(post.id) %></p>
-        <p><%= link_to 'Delete Post', post_path(post.id), method: :delete, data: {confirm: 'Are you sure?'} %></p><br>
-      <% end %>
+        <div class="comments-list">
+          <% post.comments.each do |comment| %>
+          <h5><%= comment.user.username %>:</h5>
+          <p><%= comment.body %></p>
+          <% end %>
+        </div>
+    </div>
     <% end %>
+  <% if session[:user_id] == @user %>
+    <%= link_to 'Edit Profile', edit_user_path(user) %>
+  <% end %> 
 
-<% if session[:user_id] == @user %>
-  <%= link_to 'Edit Profile', edit_user_path(@user) %>
-<% end %> 
-<%= link_to 'Back', users_path %>
+</div>
+</body>
 
