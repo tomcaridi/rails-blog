@@ -1,7 +1,7 @@
 <body class="bg-other">
 
 <% if session[:user_id] == @user %>
-  <p><%= link_to 'Edit Profile', edit_user_path(current_user) %></p>
+  <p><%= link_to 'Edit Profile', edit_user_path(user.id) %></p>
 <% end %>
 
 <div class="feed-wrapper">
