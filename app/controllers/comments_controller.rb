@@ -14,6 +14,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = Comment.find(params[:id])
     @comment.destroy
     id = session[:user_id]
     render :new, notice: "Comment deleted."

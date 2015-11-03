@@ -4,16 +4,10 @@
       <p><%= error %></p>
       <% end %>
   <% end %>
-  <div>
-	  <%=f.label :username %>
-	  <%=f.text_field :username %>
-  </div>
-  <div>
-    <%=f.label :password %>
-    <%=f.password_field :password %>
-  </div>
-  <div>
-  	<%=f.submit%>
-  </div>
+	  <div class="f-label"><%=f.label :username %></div>
+	  <div class="f-field"><%=f.text_field :username %></div>
+    <div class="f-label"><%=f.label :password %></div>
+    <div class="f-field"> <%=f.password_field :password %></div>
+  	<div class="create-user"><%=f.submit%></div>
 
 <% end %>

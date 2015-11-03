@@ -79,6 +79,10 @@ img {
 	color: white;
 }
 
+a:hover {
+	opacity: 0.4;
+}
+
 #nav {
 	width: 102%;
 	height: 40px;
@@ -111,7 +115,11 @@ img {
 	height: 200px;
 	margin: 0 auto;
 	background-color: #cfd6d4;
-	border-radius: 20px;
+	border-radius: 10px;
+}
+
+.f-label, .f-field, .create-user  {
+	text-align: center;
 }
 
 h1 {
@@ -120,15 +128,20 @@ h1 {
 }
 
 .user-wrapper {
-	width: 95%;
-	height: auto;
+	width: 80%;
 	margin: 0 auto;
 }
+
+.user-list-wrapper {
+	width: 75%;
+	margin: 0 auto;
+}
+
 .user-bx {
-	width: 20%;
-	height: 150px;
-	background-color: #A9C1BD;
-	border-radius: 10px;
+	width: 200px;
+	height: 200px;
+	background-color: #57867E;
+	border-radius: 5px;
 	float: left;
 	margin-right: 15px;
 	margin-top: 15px;
@@ -147,9 +160,20 @@ h3 {
 .post-wrapper {
 	width: 95%;
 	margin: 0 auto;
-	border: 1px solid black;
+	border: 1px solid #57867E;
 	border-radius: 5px;
 	margin-bottom: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.newpost-wrapper {
+	width: 95%;
+	margin: 0 auto;
+	border: 1px solid #57867E;
+	border-radius: 5px;
+	margin-top: 20px;
+	padding-bottom: 10px;
 }
 
 .comments-form {
@@ -162,14 +186,22 @@ h3 {
 	margin: 0 auto;
 }
 
-textarea#comment_bx {
+textarea#post-bx {
+	width: 98.5%;
+	height: 200px;
+	margin: 0 auto;
+	border-radius: 5px;
+}
+
+textarea#comment-bx {
 	width: 98.5%;
 	margin: 0 auto;
 	border-radius: 5px;
 }
 
-.comment-btn {
-	width: 50px;
+.submit-btn {
+	width: 100px;
+	height: 20px;
 	border-radius: 5px;
 }
 
@@ -177,10 +209,14 @@ textarea#comment_bx {
 	width: 95%;
 	height: auto;
 	margin: 0 auto;
-	padding-top: 10px;
 }
 
 .edit_delete {
 	width: 95%;
 	margin: 0 auto;
+}
+
+.back {
+	width: 50px;
+	height: 50px;
 }
