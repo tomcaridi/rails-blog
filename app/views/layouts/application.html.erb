@@ -18,18 +18,20 @@
 	  <li><%= link_to "Sign Up", sign_up_path %></li>
     <% end %>
     <% if session[:user_id] %>
+    <li><%= link_to "My Feed", user_path(session[:user_id]) %></li>
     <li><%= link_to "New Post", new_post_path %></li>
+    <li><%= link_to 'Edit Profile', edit_user_path(session[:user_id]) %></li>
     <li><%= link_to "Sign Out", users_sign_out_path %></li>
     <% end %> 
   </ul>
 </nav>
 
   <% if flash[:notice] %>
-    <%=flash[:notice] %>
+    <div class="notice"><%=flash[:notice] %></div>
   <% end %>
 
   <% if flash[:alert] %>
-    <%=flash[:alert] %>
+    <div class="alert"><%=flash[:alert] %></div>
   <% end %>
 
 <%= yield %>

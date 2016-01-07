@@ -14,9 +14,9 @@ class UsersController < ApplicationController
   	if @user.save
   		flash[:notice] = "Welcome grasshopper! Now you can sign in."
   	else 
-  		flash[:alert] ="There was a problem creating your account. Try again!"
+  		flash[:alert] = "There was a problem creating your account. Try again!"
   	end
-  	redirect_to sign_up_path
+  	redirect_to sign_in_path
   end
   
   def show
@@ -28,14 +28,17 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update(user_params)
+    if @user.update(user_params)
     redirect_to user_path(@user), notice: "Sucessfully updated profile."
+    else
+    redirect_to edit_user_path(@user), alert: "There was an issue"
+    end
   end
 
   def destroy
     @user.destroy
     session[:user_id] = nil
-    redirect_to user_path(@user), notice: "User successfully deleted."
+    redirect_to root_path, notice: "User successfully deleted."
   end
 
   def search
@@ -56,6 +59,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(:username, :password, :avatar)
   end
 end

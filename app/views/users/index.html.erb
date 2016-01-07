@@ -2,7 +2,10 @@
   <div class="user-wrapper">
     <% @users.each do |user| %>
     <div class="user-list-wrapper">
-	  <div class="user-bx"><%=link_to user.username, user_path(user.id)%></div>
+	  <div class="user-bx">
+	  	<h5><%=link_to user.username, user_path(user.id)%></h5>
+	  	<%= image_tag user.avatar.url(:thumb) %>
+	  </div>
     </div>
     <% end %>
 </div>

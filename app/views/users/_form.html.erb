@@ -1,13 +1,10 @@
-<%= form_for @user do |f| %>
-  <% if @user.errors.any? %>
-    <% @user.errors.full_messages.each do |error| %>
-      <p><%= error %></p>
-      <% end %>
-  <% end %>
-	  <div class="f-label"><%=f.label :username %></div>
-	  <div class="f-field"><%=f.text_field :username %></div>
-    <div class="f-label"><%=f.label :password %></div>
-    <div class="f-field"> <%=f.password_field :password %></div>
-  	<div class="create-user"><%=f.submit%></div>
+<%= form_for @user, :url => user_path, :html => { :multipart => true } do |f| %>
 
+  <div class="f-label"><%=f.label :username, class:"f-label" %></div>
+  <div class="f-field"><%=f.text_field :username %></div>
+  <div class="f-label"><%=f.label :password %></div>
+  <div class="f-field"><%=f.password_field :password %></div>
+  <div class="f-label"><%=f.label :profile_image %></div>
+  <div class="f-field"><%= f.file_field :avatar %></div>
+  <div class="create-user"><%=f.submit%></div>
 <% end %>

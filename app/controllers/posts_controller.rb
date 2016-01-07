@@ -15,13 +15,6 @@ class PostsController < ApplicationController
     id = session[:user_id]
     @post = Post.create(body: body, user_id: id)
     redirect_to user_path(id)
-  	# if @post.save
-  	#   flash[:notice] = "Post was published"
-   #    redirect_to user_path
-  	# else
-  	#   flash[:alert] = "Post was not published"
-   #    redirect_to :back
-  	# end
   end
 
   def edit
@@ -35,7 +28,6 @@ class PostsController < ApplicationController
 
   def show
     @comment = Comment.new
-    # @comments = @posts.comments
     redirect_to user_path(@user)
   end
 

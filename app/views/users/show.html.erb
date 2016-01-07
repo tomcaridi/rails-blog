@@ -1,11 +1,9 @@
 <body class="bg-other">
-
-<% if session[:user_id] == @user %>
-  <p><%= link_to 'Edit Profile', edit_user_path(user.id) %></p>
-<% end %>
-
 <div class="feed-wrapper">
   <h3><%= @user.username %>'s blabs:</h3>
+  <div class="avatar-wrapper">
+    <div class="avatar"><%= image_tag @user.avatar.url(:medium) %></div>
+  </div>
     <% @posts.reverse_each do |post| %>
     <div class="post-wrapper">
       <div class="post">
